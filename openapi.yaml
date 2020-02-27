@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  description: This is an API for a patient report reciever
+  version: 1.0.0
+  title: Patient vitals API
+
+paths:
+  /report/get_offset:
+    get:
+        summary: Gets message at an offset
+        operationId: app.getOffset
+        description: Gets message at an offset
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+        - in: query
+          name: offset
+          description: Search by offset
+          required: true
+          type: integer
+        responses:
+          201:
+            description: Recieved
+          400:
+            description: Invalid input, object invalid
+
+  /report/get_last:
+    get:
+      summary: Gets last message
+      operationId: app.getLast
+      description: Gets last message
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        201:
+          description: Recieved
+        400:
+          description: Invalid input, object invalid
+
+definitions:
+  offsetInfo:
+    type: object
+    required:
+    - offset
+    properties:
+      offset:
+        type: integer

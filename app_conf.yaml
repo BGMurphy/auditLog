@@ -1,0 +1,5 @@
+version: 1
+datastore:
+  server: "localhost"
+  port: "9092"
+  topic: "events"
