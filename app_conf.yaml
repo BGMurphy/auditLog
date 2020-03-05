@@ -1,5 +1,5 @@
 version: 1
 datastore:
-  server: "localhost"
+  server: "microservices-a00805865.eastus.cloudapp.azure.com"
   port: "9092"
   topic: "events"
