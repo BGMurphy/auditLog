@@ -14,6 +14,12 @@ import logging.config
 with open('log_conf.yaml', 'r') as f:
     log_config = yaml.safe_load(f.read())
     logging.config.dictConfig(log_config)
+try:
+    with open('/config/app_conf.yaml', 'r') as f:
+        app_config = yaml.safe_load(f.read())
+except:
+    with open('app_conf.yaml', 'r') as f:
+        app_config = yaml.safe_load(f.read())
 
 logger = logging.getLogger('basicLogger')
 
@@ -55,9 +61,6 @@ def getLast():
                 return msg["payload"], 201
 
     return NoContent, 201
-
-with open('app_conf.yaml', 'r') as f:
-    app_config = yaml.safe_load(f.read())
 
 app = connexion.FlaskApp(__name__, specification_dir='')
 app.add_api("openapi.yaml")
